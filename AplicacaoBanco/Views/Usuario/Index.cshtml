@@ -1,0 +1,103 @@
+﻿@model IEnumerable<AplicacaoBanco.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de usuários</h1>
+
+<p>
+    <a asp-action="CadastrarUsuario">Criar novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nomeUsu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cargo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataNasc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CEP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Logradouro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complemento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomeUsu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cargo)
+            </td>
+            <td>
+                @item.DataNasc.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CEP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Logradouro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complemento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                <button type="button" class="btn btn-warning margin-top-10px">
+                   @Html.ActionLink("Editar", "AtualizarUsuario", new { id=item.IdUsu })
+                </button>
+                <button type="button" class="btn btn-secondary margin-top-10px">
+                   @Html.ActionLink("Detalhes", "DetalhesUsuario", new { id=item.IdUsu })
+                </button>
+                <button type="button" class="btn btn-danger margin-top-10px">
+                @Html.ActionLink("Excluir", "ExcluirUsuario", new { id=item.IdUsu},
+                new{ onclick = "return confirm('Deseja realmente desativar?');"})
+                </button>
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>
